@@ -7,8 +7,8 @@ use cw721::{
     AllNftInfoResponse, ApprovalResponse, ContractInfoResponse, NftInfoResponse,
     NumTokensResponse, OwnerOfResponse, TokensResponse,
 };
-use counted_cw721::{InstantiateMsg, MinterResponse, QueryMsg};
-use counted_cw721::msg::{ExecuteMsg, Extension};
+use cw721_countable::{InstantiateMsg, MinterResponse, QueryMsg};
+use cw721_countable::msg::{ExecuteMsg, Extension};
 
 fn main() {
     let mut out_dir = current_dir().unwrap();

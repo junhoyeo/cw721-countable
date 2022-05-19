@@ -1,5 +1,5 @@
 [package]
-name = "counted-cw721"
+name = "cw721-countable"
 version = "0.1.0"
 authors = ["Junho Yeo <i@junho.io>"]
 edition = "2018"
