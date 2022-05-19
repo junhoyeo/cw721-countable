@@ -4,11 +4,11 @@ use std::fs::create_dir_all;
 use cosmwasm_schema::{export_schema, export_schema_with_title, remove_schemas, schema_for};
 
 use cw721::{
-    AllNftInfoResponse, ApprovalResponse, ContractInfoResponse, NftInfoResponse,
-    NumTokensResponse, OwnerOfResponse, TokensResponse,
+    AllNftInfoResponse, ApprovalResponse, ContractInfoResponse, NftInfoResponse, NumTokensResponse,
+    OwnerOfResponse, TokensResponse,
 };
-use cw721_countable::{InstantiateMsg, MinterResponse, QueryMsg};
 use cw721_countable::msg::{ExecuteMsg, Extension};
+use cw721_countable::{InstantiateMsg, MinterResponse, QueryMsg};
 
 fn main() {
     let mut out_dir = current_dir().unwrap();
