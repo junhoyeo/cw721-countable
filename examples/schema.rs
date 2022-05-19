@@ -1,10 +1,14 @@
 use std::env::current_dir;
 use std::fs::create_dir_all;
 
-use cosmwasm_schema::{export_schema, remove_schemas, schema_for};
+use cosmwasm_schema::{export_schema, export_schema_with_title, remove_schemas, schema_for};
 
-use counted_cw721::msg::{CountResponse, ExecuteMsg, InstantiateMsg, QueryMsg};
-use counted_cw721::state::State;
+use cw721::{
+    AllNftInfoResponse, ApprovalResponse, ContractInfoResponse, NftInfoResponse,
+    NumTokensResponse, OwnerOfResponse, TokensResponse,
+};
+use counted_cw721::{InstantiateMsg, MinterResponse, QueryMsg};
+use counted_cw721::msg::{ExecuteMsg, Extension};
 
 fn main() {
     let mut out_dir = current_dir().unwrap();
@@ -13,8 +17,22 @@ fn main() {
     remove_schemas(&out_dir).unwrap();
 
     export_schema(&schema_for!(InstantiateMsg), &out_dir);
-    export_schema(&schema_for!(ExecuteMsg), &out_dir);
+    export_schema_with_title(&schema_for!(ExecuteMsg), &out_dir, "ExecuteMsg");
     export_schema(&schema_for!(QueryMsg), &out_dir);
-    export_schema(&schema_for!(State), &out_dir);
-    export_schema(&schema_for!(CountResponse), &out_dir);
+    export_schema_with_title(
+        &schema_for!(AllNftInfoResponse<Extension>),
+        &out_dir,
+        "AllNftInfoResponse",
+    );
+    export_schema(&schema_for!(ApprovalResponse), &out_dir);
+    export_schema(&schema_for!(ContractInfoResponse), &out_dir);
+    export_schema(&schema_for!(MinterResponse), &out_dir);
+    export_schema_with_title(
+        &schema_for!(NftInfoResponse<Extension>),
+        &out_dir,
+        "NftInfoResponse",
+    );
+    export_schema(&schema_for!(NumTokensResponse), &out_dir);
+    export_schema(&schema_for!(OwnerOfResponse), &out_dir);
+    export_schema(&schema_for!(TokensResponse), &out_dir);
 }
